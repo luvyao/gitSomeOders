@@ -1,0 +1,64 @@
+    <el-table
+      :data="tableData"
+      style="width: 100%"
+      align="center"
+      @selection-change="handleSelectionChange"
+      :row-class-name="tableRowClassName"
+    >
+      <el-table-column type="selection" width="40"></el-table-column>
+      <el-table-column type="index" width="49" label="序号"></el-table-column>
+      <el-table-column
+        v-for="(key, index) in Object.keys(tableHead)"
+        :key="index"
+        :property="key"
+        :label="tableHead[key]"
+        width="100"
+      >
+        <template slot-scope="scope">
+          <span>{{ scope.row[scope.column.property] }}</span>
+        </template>
+      </el-table-column>
+    </el-table>
+
+      tableHead: {
+        buyerName: "购买方名称",
+        invoiceTotal: "开票合计金额",
+        invoiceState: "开票状态",
+        invoiceCode: "发票代码",
+        invoiceNum: "发票号码",
+        invoiceDate: "开票日期",
+        extensionNum: "分机号",
+        machineNum: "机器编号",
+        rushRedState: "冲红状态",
+        orderNum: "订单号",
+        invoicePeople: "开票人",
+        invoiceSource: "开票来源",
+        invoiceMethod: "开票方式",
+        typeOfInvoice: "发票种类",
+        receiverPhone: "收票人手机号",
+        receiverEmail: "收票人邮箱",
+        messageState: "短信发送状态",
+        emailState: "邮件发送状态",
+      },
+      tableData: [
+        {
+          buyerName: "清风", //购买方名称
+          invoiceTotal: 123400, //开票合计金额
+          invoiceState: 1, //开票状态  0开票失败 1开票中 2未开票 3开票成功
+          invoiceCode: 1231123123123, //发票代码
+          invoiceNum: 101010111, //发票号码
+          invoiceDate: "2020-10-12", //开票日期
+          extensionNum: "010-12341234", //分机号
+          machineNum: 9990101, //机器编号
+          rushRedState: 1, //冲红状态 0冲红中 1已冲红
+          orderNum: 111100011, //订单号
+          invoicePeople: "叶冠英", //开票人
+          invoiceSource: "开票来源", //开票来源
+          invoiceMethod: "开票方式", //开票方式
+          typeOfInvoice: "发票种类", //发票种类
+          receiverPhone: "131123111111", //收票人手机号
+          receiverEmail: "qwe1@qq.com", //收票人邮箱
+          messageState: 1, //短信发送状态 0发送失败 1发送成功 2未发送
+          emailState: 1, //邮件发送状态 0发送失败 1发送成功 2未发送
+        },
+      ],
